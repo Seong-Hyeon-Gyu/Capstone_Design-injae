@@ -1,3 +1,5 @@
+# 대구가톨릭대학교 캡스톤디자인 [인재]
+LeapMotion을 활용하여 다양한 게임으로 인지재활을 도와주는 프로그램
 # 홍보 및 설명 영상
 **홍보영상**
 <https://www.canva.com/design/DAGoKGSSf8M/dRGGic-0yA4hvqgqJMPTHw/watch?utm_content=DAGoKGSSf8M&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h602300fc05>
@@ -35,7 +37,7 @@
 ![image](https://github.com/user-attachments/assets/23304127-f165-456b-ae63-8bbd8cc1d1a9)
 
 # 제공 게임
-| 메인 화면 | 일정 작성 | AI 일정 추천 | 게시글 작성 | AI 본문 작성 | 순서 맞추기 |
+| 카드 맞추기 | 슈팅 게임 | 분류 게임 | 과일 맞추기 | 장소 추론 | 순서 맞추기 |
 |-----------|-----------|----------------|----------------|----------------|----------------|
 |![image](https://github.com/user-attachments/assets/8a966f24-8085-4fcb-9301-8352ad8df75f)|![image](https://github.com/user-attachments/assets/8722aaa2-7f80-499f-8a08-0fdd22126d7f)|![image](https://github.com/user-attachments/assets/7ff1fae4-a98e-420c-af4a-6fd810e398e8)|![image](https://github.com/user-attachments/assets/3761a561-da11-4983-8e2f-d51a98e645dd)|![image](https://github.com/user-attachments/assets/f9c69590-c7d7-4475-861c-778b5ba95e0e)|![image](https://github.com/user-attachments/assets/33f263fb-a11e-42e3-aa25-266904373eb0)|
 | 기억력 훈련 | 주의력 · 반응 속도 훈련 | 정보 처리 · 분류 능력 훈련 | 판단력 · 선택 반응 훈련 | 언어 이해 · 기억 회상 · 추론 훈련 | 주의 집중 · 작업 기억 · 순서 처리력 훈련|
