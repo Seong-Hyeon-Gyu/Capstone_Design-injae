@@ -28,3 +28,23 @@
 >이 시스템은 사용자 개개인의 손동작을 활용하여 자연스럽고 능동적인 참여를 유도하며, 게임을 통해 인지 능력과 소근육 운동 기능 향상에 동시에 기여할 수 있습니다. 사용자의 활동은 자동으로 기록되어 추후 성과 분석이나 재활 진도 체크에도 활용될 수 있으며, 사용자가 스스로 자신의 변화를 인지하고 동기를 유지하는 데 도움을 줍니다. 또한 집에서도 간편하게 사용할 수 있어 공간과 인력의 제약 없이 지속적인 인지 훈련이 가능해집니다. 이처럼 립모션 기반의 인지 재활 놀이는 단순한 치료 도구를 넘어, 재미와 기능을 결합한 사용자 중심의 재활 플랫폼으로 자리매김할 수 있으며, 인지 저하 예방 및 치료 분야에서 긍정적인 영향을 줄 수 있습니다.
  
 # 사용 기술
+![image](https://github.com/user-attachments/assets/bec7e9b7-ed8d-44d9-a935-994bba36e5d7)
+![image](https://github.com/user-attachments/assets/c64943ae-4194-45b5-97ad-6fbb1d621fc1)
+![image](https://github.com/user-attachments/assets/2fbdc710-ea5b-44ed-8555-fc1017c8cf93)
+![image](https://github.com/user-attachments/assets/da95b8e2-e2d4-483c-bfcd-80bf38b6285f)
+![image](https://github.com/user-attachments/assets/23304127-f165-456b-ae63-8bbd8cc1d1a9)
+
+# 제공 게임
+| 메인 화면 | 일정 작성 | AI 일정 추천 | 게시글 작성 | AI 본문 작성 | 순서 맞추기 |
+|-----------|-----------|----------------|----------------|----------------|----------------|
+|![image](https://github.com/user-attachments/assets/8a966f24-8085-4fcb-9301-8352ad8df75f)|![image](https://github.com/user-attachments/assets/8722aaa2-7f80-499f-8a08-0fdd22126d7f)|![image](https://github.com/user-attachments/assets/7ff1fae4-a98e-420c-af4a-6fd810e398e8)|![image](https://github.com/user-attachments/assets/3761a561-da11-4983-8e2f-d51a98e645dd)|![image](https://github.com/user-attachments/assets/f9c69590-c7d7-4475-861c-778b5ba95e0e)|![image](https://github.com/user-attachments/assets/33f263fb-a11e-42e3-aa25-266904373eb0)|
+| 기억력 훈련 | 주의력 · 반응 속도 훈련 | 정보 처리 · 분류 능력 훈련 | 판단력 · 선택 반응 훈련 | 언어 이해 · 기억 회상 · 추론 훈련 | 주의 집중 · 작업 기억 · 순서 처리력 훈련|
+
+# 아쉬웠던 점
+
+> 실제 고령층 대상자와의 현장 테스트가 부족하여 사용성에 대한 직접적인 검증이 어려웠음
+
+> Leap Motion 제스터 인식 정확도가 손의 위치, 조명 등에 따라 불안정하게 작동
+
+> 일부 게임에서 난이도 조절 기능 부재 및 반복성 부족으로 개인화된 경험 제공에 한계
+
