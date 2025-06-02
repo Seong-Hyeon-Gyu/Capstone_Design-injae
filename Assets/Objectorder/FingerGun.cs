@@ -14,11 +14,11 @@ public class FingerGun : MonoBehaviour
 
     public float fireCooldown = 5f;  // 발사 간격 (초)
     private float lastFireTime = 0f; // 마지막 발사 시각
-
+    public ObjectManager OM;
     void Start()
     {
         controller = new Controller(); // 컨트롤러 초기화
-
+        
     }
 
     void Update()
@@ -30,10 +30,15 @@ public class FingerGun : MonoBehaviour
             Hand hand = frame.Hands[0]; // 첫 번째 손
             Vector3 fingerPosition = shootOrigin.position;        // ✅ Transform에서 위치만 뽑음
             Vector3 fingerDirection = shootOrigin.forward;
+            
+            if (fingerDirection.z < 0)  
+                return;
             if (Time.time - lastFireTime > fireCooldown)
             {
-                
+
                 Shoot(fingerPosition, fingerDirection);
+                //Debug.Log($"shootOrigin.forward = {fingerDirection.x:F3}, {fingerDirection.y:F3}, {fingerDirection.z:F3}");
+                //Debug.DrawRay(fingerPosition, fingerDirection * 2f, Color.red, 1f);
                 lastFireTime = Time.time;
             }
         }

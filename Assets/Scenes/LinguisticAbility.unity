@@ -6226,11 +6226,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257591552430838404, guid: 822fa905043353249b0e0b48e0e99dc5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.937
+      value: 0.957
       objectReference: {fileID: 0}
     - target: {fileID: 6257591552430838404, guid: 822fa905043353249b0e0b48e0e99dc5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.748
+      value: 0.481
       objectReference: {fileID: 0}
     - target: {fileID: 7303196602067405629, guid: 822fa905043353249b0e0b48e0e99dc5, type: 3}
       propertyPath: m_fontAsset
@@ -6359,6 +6359,10 @@ PrefabInstance:
     - target: {fileID: 9080456677920801122, guid: 822fa905043353249b0e0b48e0e99dc5, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141493523930250753, guid: 822fa905043353249b0e0b48e0e99dc5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -318
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5368597334712536688, guid: 822fa905043353249b0e0b48e0e99dc5, type: 3}

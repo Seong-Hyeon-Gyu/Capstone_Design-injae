@@ -21,10 +21,10 @@ public class BulletScript : MonoBehaviour
         {
             if (collision.gameObject.name == goal.Target[i].name)
             {
-                Debug.Log("총알이 통과한 오브젝트: " + collision.gameObject.name);
+                //Debug.Log("총알이 통과한 오브젝트: " + collision.gameObject.name);
                 
                 ExpectedObject = collision.gameObject.name;
-                Debug.Log(ExpectedObject);
+                //Debug.Log(ExpectedObject);
                 isCollision=true;
             }
         }

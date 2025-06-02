@@ -1,19 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements.Experimental;
+using UnityEngine.SceneManagement;
 //Target Object
 public class ObjectManager : MonoBehaviour
 {
     public GameObject[] Target = new GameObject[7];
     // Start is called before the first frame update
-    public GameObject handObject;
-    public BulletScript gun;
-    public FingerGun finger;
+    private BulletScript gun;
+    private FingerGun finger;
     public string clickname;
     public static int rndInt;
     public static int Level=1;
@@ -21,7 +18,6 @@ public class ObjectManager : MonoBehaviour
     public static int life=3;
     public int Integer;
     public bool isPassed;
-    private bool clickOccurred;
     public string expected;
     public List<int> randomlist = new List<int>();
     public List<AudioClip> audioClips = new List<AudioClip>();
@@ -47,7 +43,8 @@ public class ObjectManager : MonoBehaviour
     void Start()
     {
         rndInt = 0;
-        gun=GameObject.Find("bullet").GetComponent<BulletScript>();
+        //startShot = false;
+        gun =GameObject.Find("bullet").GetComponent<BulletScript>();
         //GameObject targetObj = GameObject.Find("BulletObject");
         audioClips.Add(Resources.Load<AudioClip>("Sounds/Do"));
         audioClips.Add(Resources.Load<AudioClip>("Sounds/Re"));
@@ -56,6 +53,8 @@ public class ObjectManager : MonoBehaviour
         audioClips.Add(Resources.Load<AudioClip>("Sounds/Sol"));
         audioClips.Add(Resources.Load<AudioClip>("Sounds/Ra"));
         audioClips.Add(Resources.Load<AudioClip>("Sounds/Si"));
+        audioClips.Add(Resources.Load<AudioClip>("Sounds/Yes"));
+        audioClips.Add(Resources.Load<AudioClip>("Sounds/No"));
 
         Target[0] = GameObject.Find("Do");
         Target[1] = GameObject.Find("Re");
@@ -80,24 +79,29 @@ public class ObjectManager : MonoBehaviour
                 StartCoroutine(Emisisioneffect(Integer));
                 yield return new WaitForSeconds(2f);    
             }
-            
+            //startShot = true;
             for(int i=0; i<Level; i++) {      
                 isPassed = false;
-                Debug.Log("플래그 "+isPassed);
+                //Debug.Log("플래그 "+isPassed);
                 yield return new WaitUntil(() => isPassed);
-                Debug.Log("isPassed 정상");
+                //Debug.Log("isPassed 정상");
                 Integer = randomlist[i];
-                Debug.Log("선택한 오브젝트"+ expected);
+                //Debug.Log("오브젝트"+ expected);
                 if (Target[Integer].name == expected)
                 {
                     // 찾았다!
                     Score += Level;
-                    Debug.Log("정답 " + (i + 1));
+                    Debug.Log("정답!");
                     StartCoroutine(Emisisioneffect(Integer));
-                }else {
-                    life  -= 1;
+                    PlayAudio(7);
+                }
+                else
+                {
+                    life -= 1;
                     Score -= 5;
-                    Debug.Log("다시하세요. 남은 횟수는 " + life + " (" + (i + 1) + ")");
+                    StartCoroutine(Emisisioneffect(Integer));
+                    Debug.Log("다시하세요. 남은 횟수는 " + life);
+                    PlayAudio(8);
                     i--;    // 같은 i 반복
                     continue;
                 }
@@ -106,13 +110,13 @@ public class ObjectManager : MonoBehaviour
             
             Debug.Log("레벨 업"+(Level+1));
             Level++;
-        
+            //startShot = false;
         
         }
     }
     void Update()
     {
-        isPassed= false;
+        isPassed = false;
         var bullets = FindObjectsOfType<BulletScript>();
         //Debug.Log($"[Debug] 총알 개수 = {bullets.Length}");
         foreach (var bs in bullets)
@@ -121,9 +125,13 @@ public class ObjectManager : MonoBehaviour
             if (bs.isCollision)
                 //Debug.Log($"[Finder] {bs.name} passed → {bs.ExpectedObject}");
                 isPassed = bs.isCollision;
-                bs.isCollision = false;
-                expected = bs.ExpectedObject;
-                break;
+            bs.isCollision = false;
+            expected = bs.ExpectedObject;
+            break;
+        }
+        if (life == 0)
+        {
+            SceneManager.LoadScene("scene_selector");
         }
         
     }

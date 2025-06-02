@@ -37,6 +37,7 @@ public class PlaceManager : MonoBehaviour
     private int currentIndex = 0;
     private Clue correctClue;
     private bool inputLocked = false;
+    private int currentClueIndex = 0;
 
     void Start()
     {
@@ -52,9 +53,10 @@ public class PlaceManager : MonoBehaviour
         foreach (Transform child in buttonContainer)
             Destroy(child.gameObject);
 
+        // 문제 끝 조건: 모든 문제 + 각 문제당 2문제 완료
         if (currentIndex >= problems.Length)
         {
-            questionTextUI.text = "";  // ❗ 아무 것도 띄우지 않음
+            questionTextUI.text = "";
             clueImageUI.enabled = false;
             feedbackText.text = "<color=green>퀴즈가 모두 끝났어요!\n수고하셨습니다.</color>";
             Invoke(nameof(LoadResultScene), 5f);
@@ -62,16 +64,25 @@ public class PlaceManager : MonoBehaviour
         }
 
         ProblemItem problem = problems[currentIndex];
-        currentIndex++;
+
+        // 정답 Clue 선택: 문제당 2문제 (clue[0], clue[1])
+        if (currentClueIndex >= problem.clues.Length || currentClueIndex >= 2)
+        {
+            currentIndex++;
+            currentClueIndex = 0;
+
+            ShowNextQuestion(); // 다음 문제로 재귀 호출
+            return;
+        }
+
+        correctClue = problem.clues[currentClueIndex];
+        currentClueIndex++;
 
         // 문제 질문 표시
         questionTextUI.text = problem.questionText;
-
-        // 정답 clue 1개 랜덤 선택
-        correctClue = problem.clues[Random.Range(0, problem.clues.Length)];
         clueImageUI.sprite = correctClue.clueImage;
 
-        // 정답과 오답 보기 생성
+        // 보기 구성
         List<string> options = new List<string> { correctClue.placeName };
 
         List<string> distractors = problem.clues
@@ -89,18 +100,31 @@ public class PlaceManager : MonoBehaviour
 
         options = options.OrderBy(_ => Random.value).ToList();
 
-        // 보기 버튼 생성
+        // 버튼 생성
         foreach (string opt in options)
         {
             Button btn = Instantiate(optionButtonPrefab, buttonContainer);
             btn.GetComponentInChildren<TextMeshProUGUI>().text = opt;
 
             btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() => OnOptionSelected(opt));
+            string choice = opt;
+            btn.onClick.AddListener(() => OnOptionSelected(choice));
+
+            PhysicalUITrigger trigger = btn.gameObject.AddComponent<PhysicalUITrigger>();
+            trigger.targetButton = btn;
+
+            if (btn.GetComponent<BoxCollider>() == null)
+            {
+                BoxCollider col = btn.gameObject.AddComponent<BoxCollider>();
+                RectTransform rt = btn.GetComponent<RectTransform>();
+                col.size = new Vector3(rt.rect.width, rt.rect.height, 0.1f);
+                col.center = Vector3.zero;
+            }
         }
     }
 
-    void OnOptionSelected(string selected)
+
+    public void OnOptionSelected(string selected)
     {
         if (inputLocked) return;
         inputLocked = true;

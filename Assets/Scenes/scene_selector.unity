@@ -711,7 +711,6 @@ MonoBehaviour:
   - {fileID: 1990607172}
   - {fileID: 1306562504}
   - {fileID: 198535816}
-  columnCount: 3
 --- !u!4 &349402580
 Transform:
   m_ObjectHideFlags: 0
